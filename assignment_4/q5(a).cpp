@@ -2,44 +2,44 @@
 #include <queue>
 using namespace std;
 
-class StackTwoQueues {
-    queue<int> q1, q2;
-public:
-    void push(int x) {
-        q2.push(x);
-        while (!q1.empty()) {
-            q2.push(q1.front());
-            q1.pop();
-        }
-        swap(q1, q2);
-    }
-    void pop() {
-        if (q1.empty()) {
-            cout << "Stack is empty\n";
-            return;
-        }
-        cout << "Popped " << q1.front() << "\n";
+queue<int> q1, q2;
+
+void push(int x) {
+    q2.push(x);
+    while(!q1.empty()) {
+        q2.push(q1.front());
         q1.pop();
     }
-    int top() {
-        if (q1.empty()) {
-            cout << "Stack is empty\n";
-            return -1;
-        }
-        return q1.front();
+    swap(q1, q2);
+}
+
+void pop() {
+    if(q1.empty()) {
+        cout << "Stack empty\n";
+        return;
     }
-    bool empty() {
-        return q1.empty();
+    cout << "Popped " << q1.front() << "\n";
+    q1.pop();
+}
+
+int top() {
+    if(q1.empty()) {
+        cout << "Stack empty\n";
+        return -1;
     }
-};
+    return q1.front();
+}
+
+bool empty() {
+    return q1.empty();
+}
 
 int main() {
-    StackTwoQueues s;
-    s.push(10);
-    s.push(20);
-    s.pop();
-    cout << "Top is " << s.top() << "\n";
-    s.pop();
-    s.pop();
+    push(10);
+    push(20);
+    pop();
+    cout << "Top is " << top() << "\n";
+    pop();
+    pop();
     return 0;
 }
