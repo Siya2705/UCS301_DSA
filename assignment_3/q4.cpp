@@ -36,3 +36,36 @@ string infixToPostfix(string infix){
     string postfix="";
     top=-1;
     for(int i=0;i<(int)infix.length();i++){
+        char c=infix[i];
+        if((c>='a'&&c<='z')||(c>='A'&&c<='Z')||(c>='0'&&c<='9')){
+            postfix+=c;
+        }
+        else if(c=='('){
+            push(c);
+        }
+        else if(c==')'){
+            while(!isEmpty()&&peek()!='('){
+                postfix+=pop();
+            }
+            if(!isEmpty())pop();
+        }
+        else if(isOperator(c)){
+            while(!isEmpty()&&precedence(peek())>=precedence(c)){
+                postfix+=pop();
+            }
+            push(c);
+        }
+    }
+    while(!isEmpty()){
+        postfix+=pop();
+    }
+    return postfix;
+}
+int main(){
+    string infixExp;
+    cout<<"Enter Infix expression:";
+    getline(cin,infixExp);
+    string postfixExp=infixToPostfix(infixExp);
+    cout<<"Postfix expression:"<<postfixExp<<endl;
+    return 0;
+}
