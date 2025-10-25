@@ -51,11 +51,11 @@ public:
 int main() {
     CircularLinkedList cll;
 
-    cll.insertAtEnd(10);
-    cll.insertAtEnd(30);
-    cll.insertAtEnd(50);
-    cll.insertAtEnd(70);
-    cll.insertAtEnd(90);
+    cll.insertAtEnd(20);
+    cll.insertAtEnd(100);
+    cll.insertAtEnd(40);
+    cll.insertAtEnd(80);
+    cll.insertAtEnd(60);
 
     cout << "Output: ";
     cll.displayWithHeadRepeat();
