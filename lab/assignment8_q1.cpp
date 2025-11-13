@@ -12,7 +12,7 @@ void preorder(int tree[],int index,int n){
 }
 void inorder(int tree[],int index,int n){
 	if(index>=n||tree[index]==-1){
-		return;
+		return ;
 	}
 	inorder(tree,2*index+1,n);
 	cout<<tree[index]<<" ";
@@ -31,9 +31,16 @@ int main(){
 	int n;
 	cout<<"Enter number of elements:";
 	cin>>n;
-	cout<<"Enter Tree elements:"<<endl;
+	cout<<"Enter root node:";
+	cin>>tree[0];
 	for(int i=0;i<n;i++){
-		cin>>tree[i];
+		if(tree[i]==-1){
+			continue;
+		}
+		cout<<"Enter left child of "<<tree[i]<<endl;
+		cin>>tree[2*i+1];
+		cout<<"Enter right child of "<<tree[i]<<endl;
+		cin>>tree[2*i+2];
 	}
 	
 	cout<<"Preorder Traversal"<<endl;
